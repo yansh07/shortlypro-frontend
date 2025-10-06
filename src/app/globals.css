@@ -1,26 +1,27 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito);
 }
+
+h1 {
+  font-family: var(--font-space);
+}
+/* 🎨 Color Palette
+Primary Colors
+
+Background: #0F172A (slate-900) - deep, professional dark
+Surface/Cards: #1E293B (slate-800) - slightly lighter for cards
+Borders: #334155 (slate-700) - subtle separation
+
+Accent Colors
+
+Primary Accent: #3B82F6 (blue-500) - for CTAs, links
+Primary Hover: #2563EB (blue-600)
+Success: #10B981 (emerald-500) - for copy success, active states
+Warning: #F59E0B (amber-500) - for alerts
+
+Text Colors
+
+Primary Text: #F8FAFC (slate-50) - main headings
+Secondary Text: #CBD5E1 (slate-300) - body text
+Muted Text: #94A3B8 (slate-400) - labels, helper text */
