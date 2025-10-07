@@ -4,6 +4,8 @@ import React from 'react'
 import { Link2, Menu, X, Zap, Shield, Heart, BarChart3, Code, TrendingUp, Coffee } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
 export default function Page() {
     const router = useRouter();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,12 +29,12 @@ export default function Page() {
               {/* <a href="#features" className="text-slate-300 hover:text-white transition-colors">
                 Features
               </a> */}
-              <a href="/pricing" className="text-slate-300 hover:text-white transition-colors">
+              <Link href="/pricing" className="text-slate-300 hover:text-white transition-colors">
                 Pricing
-              </a>
-              <a href="#about" className="text-slate-300 hover:text-white transition-colors">
-                About
-              </a>
+              </Link>
+              <Link href="/" className="text-slate-300 hover:text-white transition-colors">
+                Home
+              </Link>
             </div>
 
             {/* Auth Buttons */}
@@ -58,15 +60,15 @@ export default function Page() {
           {mobileMenuOpen && (
             <div className="md:hidden py-4 border-t border-slate-800">
               <div className="flex flex-col space-y-4">
-                <a href="#features" className="text-slate-300 hover:text-white transition-colors">
+                {/* <a href="#features" className="text-slate-300 hover:text-white transition-colors">
                   Features
-                </a>
-                <a href="/pricing" className="text-slate-300 hover:text-white transition-colors">
+                </a> */}
+                <Link href="/pricing" className="text-slate-300 hover:text-white transition-colors">
                   Pricing
-                </a>
-                <a href="#about" className="text-slate-300 hover:text-white transition-colors">
+                </Link>
+                <Link href="/" className="text-slate-300 hover:text-white transition-colors">
                   About
-                </a>
+                </Link>
                 <div className="flex flex-col space-y-2 pt-4 border-t border-slate-800">
                   <button className="px-4 py-2 text-slate-300 hover:text-white transition-colors text-left" onClick={ () => router.push('/user')}>
                     Login
@@ -94,7 +96,7 @@ export default function Page() {
               </span>
             </h1>
             <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-12">
-              We're on a mission to make URL management simple, powerful, and
+              We&apos;re on a mission to make URL management simple, powerful, and
               accessible to everyone. No complexity, just results.
             </p>
           </div>
@@ -112,11 +114,11 @@ export default function Page() {
                 <p>
                   We built Shortly to be different. Lightning-fast
                   infrastructure powered by Redis, real-time analytics that
-                  actually matter, and a clean interface that doesn't get in
+                  actually matter, and a clean interface that doesn&apos;t get in
                   your way.
                 </p>
                 <p>
-                  Whether you're a solo creator sharing content, a marketer
+                  Whether you&apos;re a solo creator sharing content, a marketer
                   tracking campaigns, or an enterprise managing thousands of
                   links, Shortly scales with you.
                 </p>
@@ -134,7 +136,7 @@ export default function Page() {
                 </h3>
                 <p className="text-slate-400">
                   Built on Redis and FastAPI for blazing-fast URL generation and
-                  redirects. Your users won't even notice the hop.
+                  redirects. Your users won&apos;t even notice the hop.
                 </p>
               </div>
 
@@ -146,7 +148,7 @@ export default function Page() {
                   Privacy Matters
                 </h3>
                 <p className="text-slate-400">
-                  Your data is yours. We don't sell information, track users
+                  Your data is yours. We don&apos;t sell information, track users
                   across sites, or do anything shady. Period.
                 </p>
               </div>
@@ -160,7 +162,7 @@ export default function Page() {
                 </h3>
                 <p className="text-slate-400">
                   Real-time analytics that help you understand your audience.
-                  See what's working and optimize accordingly.
+                  See what&apos;s working and optimize accordingly.
                 </p>
               </div>
 

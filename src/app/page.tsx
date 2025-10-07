@@ -54,7 +54,7 @@ export default function LandingPage() {
               <a href="/pricing" className="text-slate-300 hover:text-white transition-colors">
                 Pricing
               </a>
-              <a href="#about" className="text-slate-300 hover:text-white transition-colors">
+              <a href="/about" className="text-slate-300 hover:text-white transition-colors">
                 About
               </a>
             </div>
@@ -258,7 +258,9 @@ export default function LandingPage() {
           <p className="text-slate-400 text-lg mb-8">
             Join thousands of users who trust Shortly for their link management
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl font-medium transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105">
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl font-medium transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
+          onClick={() => router.push("/user")}
+          >
             Create Free Account
           </button>
         </div>

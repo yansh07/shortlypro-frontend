@@ -6,7 +6,6 @@ import {
   Plus,
   Copy,
   Check,
-  ExternalLink,
   BarChart3,
   Trash2,
   Edit2,
@@ -16,12 +15,10 @@ import {
   MousePointer,
   Globe,
   LogOut,
-  User,
   Settings,
   Menu,
   X,
   Zap,
-  Filter,
 } from "lucide-react";
 
 export default function Dashboard() {
