@@ -1,12 +1,14 @@
 'use client';
 import React, { useState } from 'react';
 import { Link2, Zap, BarChart3, Shield, Copy, Check, Menu, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function LandingPage() {
   const [url, setUrl] = useState('');
   const [shortened, setShortened] = useState('');
   const [copied, setCopied] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   const handleShorten = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,10 +60,10 @@ export default function LandingPage() {
 
             {/* Auth Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className="px-4 py-2 text-slate-300 hover:text-white transition-colors">
+              <button className="px-4 py-2 text-slate-300 hover:text-white transition-colors" onClick={ () => router.push('/user')}>
                 Login
               </button>
-              <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40">
+              <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40" onClick={ () => router.push('/user')}>
                 Sign Up
               </button>
             </div>
@@ -89,10 +91,10 @@ export default function LandingPage() {
                   About
                 </a>
                 <div className="flex flex-col space-y-2 pt-4 border-t border-slate-800">
-                  <button className="px-4 py-2 text-slate-300 hover:text-white transition-colors text-left">
+                  <button className="px-4 py-2 text-slate-300 hover:text-white transition-colors text-left" onClick={ () => router.push('/user')}>
                     Login
                   </button>
-                  <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all">
+                  <button className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all" onClick={ () => router.push('/user')}>
                     Sign Up
                   </button>
                 </div>
