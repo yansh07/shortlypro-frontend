@@ -275,7 +275,7 @@ const PricingAboutPages: FC = () => {
               </span>
             </h1>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Start free, upgrade when you're ready. No hidden fees, cancel
+              Start free, upgrade when you&apos;re ready. No hidden fees, cancel
               anytime.
             </p>
           </div>
@@ -420,7 +420,7 @@ const PricingAboutPages: FC = () => {
                   What happens if I exceed my limits?
                 </h3>
                 <p className="text-slate-400">
-                  We'll notify you before hitting limits. You can upgrade
+                  We&apos;ll notify you before hitting limits. You can upgrade
                   instantly or wait until next billing cycle.
                 </p>
               </div>
@@ -429,7 +429,7 @@ const PricingAboutPages: FC = () => {
                   Do you offer refunds?
                 </h3>
                 <p className="text-slate-400">
-                  Yes! 14-day money-back guarantee. No questions asked if you're
+                  Yes! 14-day money-back guarantee. No questions asked if you&apos;re
                   not satisfied.
                 </p>
               </div>
