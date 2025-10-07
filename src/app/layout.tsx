@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Space_Grotesk } from "next/font/google"; 
 import "./globals.css";
+import HotKeysHandler from "@/components/HotKeysHandler";
 
 const nunito = Nunito({
   variable: "--font-nunito", 
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable} ${space.variable} antialiased`}>
+        <HotKeysHandler />
         {children}
       </body>
     </html>
