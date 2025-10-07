@@ -90,6 +90,7 @@ function page() {
           <a href="/privacy">Privacy</a>
           <a href="/refund-policy">Refunds</a>
           <a href="/contact">Contact</a>
+          <a href="/shipping">Shipping</a>
         </div>
       </footer>
     </div>
