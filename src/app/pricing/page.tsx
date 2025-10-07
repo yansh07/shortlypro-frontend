@@ -11,10 +11,8 @@ import {
   TrendingUp,
   Shield,
   IndianRupee,
-  Clock,
   BarChart3,
-  Users,
-  Target,
+  
   Heart,
   Code,
   Coffee,
