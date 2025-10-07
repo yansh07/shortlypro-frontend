@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link2, Zap, BarChart3, Shield, Copy, Check, Menu, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export default function LandingPage() {
   const [url, setUrl] = useState('');
@@ -88,7 +88,7 @@ export default function LandingPage() {
                 <a href="/pricing" className="text-slate-300 hover:text-white transition-colors">
                   Pricing
                 </a>
-                <a href="#about" className="text-slate-300 hover:text-white transition-colors">
+                <a href="/about" className="text-slate-300 hover:text-white transition-colors">
                   About
                 </a>
                 <div className="flex flex-col space-y-2 pt-4 border-t border-slate-800">
