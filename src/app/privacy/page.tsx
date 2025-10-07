@@ -16,7 +16,7 @@ function page() {
       <div>
         <h1 className="font-bold text-3xl">1. Introduction</h1>
         <p className="pt-4 text-lg mb-8">
-          ShortIt (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) respects
+          Shortly (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) respects
           your privacy. This Privacy Policy explains how we collect, use, and
           protect your personal information.
         </p>

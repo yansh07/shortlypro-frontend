@@ -22,7 +22,7 @@ function page() {
       </div>
       <div>
         <h1 className="font-bold text-3xl pt-8 ">2. Service Description</h1>
-        <p className="pt-4 text-lg">ShortIt provides URL shortening services, analytics, and related features. We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time.</p>
+        <p className="pt-4 text-lg">Shortly provides URL shortening services, analytics, and related features. We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time.</p>
       </div>
       <div>
         <h1 className="font-bold text-3xl pt-8">3. User Accounts</h1>
@@ -97,7 +97,7 @@ function page() {
       </div>
       <div>
         <h1 className="font-bold text-3xl pt-8">11. Limitation of Liability</h1>
-        <p className="pt-4 text-lg">ShortIt shall not be liable for any indirect, incidental, special, or consequential damages resulting from your use of the Service.</p>
+        <p className="pt-4 text-lg">Shortly shall not be liable for any indirect, incidental, special, or consequential damages resulting from your use of the Service.</p>
       </div>
       <div>
         <h1 className="font-bold text-3xl pt-8">12. Governing Law</h1>

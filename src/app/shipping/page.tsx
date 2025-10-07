@@ -15,7 +15,7 @@ function page() {
       <div className="border mb-8"></div>
       <div>
         <h1 className="font-bold text-3xl">Digital Service - No Physical Shipping</h1>
-        <p className="pt-4 text-lg mb-8">ShortIt is a 100% digital Software-as-a-Service (SaaS) platform. We do not ship any physical products.</p>
+        <p className="pt-4 text-lg mb-8">Shortly is a 100% digital Software-as-a-Service (SaaS) platform. We do not ship any physical products.</p>
       </div>
       <div>
         <h1 className="font-bold text-3xl">Service Delivery</h1>
