@@ -85,9 +85,9 @@ export default function LandingPage() {
                 <a href="#features" className="text-slate-300 hover:text-white transition-colors">
                   Features
                 </a>
-                <Link href="/pricing" className="text-slate-300 hover:text-white transition-colors">
+                <a href="/pricing" className="text-slate-300 hover:text-white transition-colors">
                   Pricing
-                </Link>
+                </a>
                 <a href="#about" className="text-slate-300 hover:text-white transition-colors">
                   About
                 </a>
