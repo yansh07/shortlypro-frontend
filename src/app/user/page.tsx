@@ -1,24 +1,62 @@
+// app/auth/page.tsx
 'use client';
-import React, { useState } from 'react';
-import { Link2, ArrowRight, Github, Chrome, Sparkles } from 'lucide-react';
+import { useUser } from '@auth0/nextjs-auth0';
+import React, { useEffect } from 'react';
+import { Link2, Github, Chrome, Sparkles, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export default function AuthPages() {
-  const [isLogin, setIsLogin] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+export default function AuthPage() {
+  const { user, error, isLoading } = useUser();
+  const router = useRouter();
 
-  const handleSubmit = async () => {
-    setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      alert(isLogin ? 'Login successful!' : 'Account created!');
-    }, 1500);
+  // Redirect to dashboard if already logged in
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  }, [user, router]);
+
+  const handleGoogleLogin = () => {
+    window.location.href = '/api/auth/login?connection=google-oauth2&returnTo=/dashboard';
   };
 
-  const handleSocialAuth = (provider: string) => {
-    alert(`Authenticating with ${provider}...`);
+  const handleGithubLogin = () => {
+    window.location.href = '/api/auth/login?connection=github&returnTo=/dashboard';
   };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
+          <p className="text-slate-400">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/50 backdrop-blur-xl border border-red-500/50 rounded-2xl p-8 text-center">
+          <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-3xl">⚠️</span>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Authentication Error</h2>
+          <p className="text-slate-400 mb-6">{error.message}</p>
+          <button
+            onClick={() => router.push('/')}
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl transition-all"
+          >
+            Go Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-900 relative overflow-hidden flex items-center justify-center p-4">
@@ -62,19 +100,17 @@ export default function AuthPages() {
           {/* Header */}
           <div className="text-center mb-8 mt-4">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              {isLogin ? 'Welcome Back' : 'Create Account'}
+              Welcome to Shortly
             </h1>
             <p className="text-slate-400">
-              {isLogin 
-                ? 'Sign in to access your dashboard' 
-                : 'Start shortening URLs in seconds'}
+              Sign in to start shortening URLs
             </p>
           </div>
 
           {/* Social Auth Buttons */}
           <div className="space-y-3 mb-6">
             <button
-              onClick={() => handleSocialAuth('Google')}
+              onClick={handleGoogleLogin}
               className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 rounded-xl text-white transition-all group hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
             >
               <Chrome className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />
@@ -82,7 +118,7 @@ export default function AuthPages() {
             </button>
 
             <button
-              onClick={() => handleSocialAuth('GitHub')}
+              onClick={handleGithubLogin}
               className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 rounded-xl text-white transition-all group hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
             >
               <Github className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />
@@ -90,47 +126,17 @@ export default function AuthPages() {
             </button>
           </div>
 
-          {/* Submit Button */}
-          <button
-            onClick={handleSubmit}
-            disabled={isLoading}
-            className="w-full flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-          >
-            {isLoading ? (
-              <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Processing...</span>
-              </>
-            ) : (
-              <>
-                <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
-                <ArrowRight className="w-5 h-5" />
-              </>
-            )}
-          </button>
-
-          {/* Toggle Login/Signup */}
-          <div className="mt-6 text-center">
-            <p className="text-slate-400">
-              {isLogin ? "Don't have an account? " : "Already have an account? "}
-              <button
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
-              >
-                {isLogin ? 'Sign up' : 'Sign in'}
-              </button>
-            </p>
-          </div>
-
-          {/* Terms (Signup only) */}
-          {!isLogin && (
-            <p className="mt-6 text-xs text-slate-500 text-center">
-              By creating an account, you agree to our{' '}
-              <a href="#" className="text-blue-400 hover:text-blue-300">Terms of Service</a>
-              {' '}and{' '}
-              <a href="#" className="text-blue-400 hover:text-blue-300">Privacy Policy</a>
-            </p>
-          )}
+          {/* Terms */}
+          <p className="mt-6 text-xs text-slate-500 text-center">
+            By continuing, you agree to our{' '}
+            <Link href="/terms" className="text-blue-400 hover:text-blue-300">
+              Terms of Service
+            </Link>
+            {' '}and{' '}
+            <Link href="/privacy" className="text-blue-400 hover:text-blue-300">
+              Privacy Policy
+            </Link>
+          </p>
         </div>
 
         {/* Bottom Decorative Elements */}
@@ -160,5 +166,5 @@ export default function AuthPages() {
         }
       `}</style>
     </div>
-  );
+  )
 }

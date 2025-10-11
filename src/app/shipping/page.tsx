@@ -5,7 +5,7 @@ import { Link2 } from "lucide-react";
 
 function page() {
   return (
-    <div className="p-16 min-h-screen bg-slate-900 text-slate-50">
+    <div className="p-16 min-h-screen bg-slate-900 text-slate-50 overflow-x-auto">
       <div className="text-start mb-8">
         <h1 className="text-4xl font-bold text-white mb-2">SHIPPING AND DELIVERY POLICY</h1>
         <p className="text-lg text-slate-300">
