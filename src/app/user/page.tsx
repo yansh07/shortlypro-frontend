@@ -1,62 +1,64 @@
 // app/auth/page.tsx
 'use client';
-import { useUser } from '@auth0/nextjs-auth0';
-import React, { useEffect } from 'react';
+// import { useUser } from '@auth0/nextjs-auth0';
+import React from 'react';
+import { signIn } from 'next-auth/react';
 import { Link2, Github, Chrome, Sparkles, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+// import { Single_Day } from 'next/font/google';
 
 export default function AuthPage() {
-  const { user, error, isLoading } = useUser();
+  // const { user, error, isLoading } = useUser();
   const router = useRouter();
 
   // Redirect to dashboard if already logged in
-  useEffect(() => {
-    if (user) {
-      router.push('/dashboard');
-    }
-  }, [user, router]);
+  // useEffect(() => {
+  //   if (user) {
+  //     router.push('/dashboard');
+  //   }
+  // }, [user, router]);
 
-  const handleGoogleLogin = () => {
-    window.location.href = '/api/auth/login?connection=google-oauth2&returnTo=/dashboard';
-  };
+  // const handleGoogleLogin = () => {
+  //   window.location.href = '/api/auth/login?connection=google-oauth2&returnTo=/dashboard';
+  // };
 
-  const handleGithubLogin = () => {
-    window.location.href = '/api/auth/login?connection=github&returnTo=/dashboard';
-  };
+  // const handleGithubLogin = () => {
+  //   window.location.href = '/api/auth/login?connection=github&returnTo=/dashboard';
+  // };
 
   // Show loading state
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
-          <p className="text-slate-400">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+  //       <div className="text-center">
+  //         <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
+  //         <p className="text-slate-400">Loading...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   // Show error state
-  if (error) {
-    return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-slate-800/50 backdrop-blur-xl border border-red-500/50 rounded-2xl p-8 text-center">
-          <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-3xl">⚠️</span>
-          </div>
-          <h2 className="text-2xl font-bold text-white mb-2">Authentication Error</h2>
-          <p className="text-slate-400 mb-6">{error.message}</p>
-          <button
-            onClick={() => router.push('/')}
-            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl transition-all"
-          >
-            Go Home
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+  //       <div className="max-w-md w-full bg-slate-800/50 backdrop-blur-xl border border-red-500/50 rounded-2xl p-8 text-center">
+  //         <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+  //           <span className="text-3xl">⚠️</span>
+  //         </div>
+  //         <h2 className="text-2xl font-bold text-white mb-2">Authentication Error</h2>
+  //         <p className="text-slate-400 mb-6">{error.message}</p>
+  //         <button
+  //           onClick={() => router.push('/')}
+  //           className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl transition-all"
+  //         >
+  //           Go Home
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen bg-slate-900 relative overflow-hidden flex items-center justify-center p-4">
@@ -110,7 +112,9 @@ export default function AuthPage() {
           {/* Social Auth Buttons */}
           <div className="space-y-3 mb-6">
             <button
-              onClick={handleGoogleLogin}
+              onClick={() => signIn('google', {
+                callbackUrl: "/dashboard"
+              })}
               className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 rounded-xl text-white transition-all group hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
             >
               <Chrome className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />
@@ -118,7 +122,9 @@ export default function AuthPage() {
             </button>
 
             <button
-              onClick={handleGithubLogin}
+              onClick={() => signIn('github', {
+                callbackUrl: "/dashboard"
+              })}
               className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 rounded-xl text-white transition-all group hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
             >
               <Github className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />

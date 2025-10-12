@@ -1,30 +1,39 @@
 import type { Metadata } from "next";
-import { Nunito, Space_Grotesk } from "next/font/google"; 
+import { Nunito, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import HotKeysHandler from "@/components/HotKeysHandler";
+import { NextAuthProvider } from "./providers";
 
 const nunito = Nunito({
-  variable: "--font-nunito", 
+  variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "600", "700"], 
+  weight: ["400", "600", "700"],
 });
 
 const space = Space_Grotesk({
   variable: "--font-space",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
-})
+});
 
 export const metadata: Metadata = {
   title: "Shortly Pro — Shorten your URLs instantly",
-  description: "Create, manage, and share short links with analytics — free and fast.",
+  description:
+    "Create, manage, and share short links with analytics — free and fast.",
   metadataBase: new URL("https://shortleepro.vercel.app"),
-  keywords: ["URL shortener", "link shortener", "short links", "analytics", "custom domains"],
+  keywords: [
+    "URL shortener",
+    "link shortener",
+    "short links",
+    "analytics",
+    "custom domains",
+  ],
   authors: [{ name: "Priyanshu", url: "https://shortleepro.vercel.app" }],
 
   openGraph: {
     title: "Shortly Pro — Shorten your URLs instantly",
-    description: "Create, manage, and share short links with analytics — free and fast.",
+    description:
+      "Create, manage, and share short links with analytics — free and fast.",
     url: "https://shortleepro.vercel.app",
     siteName: "Shortly Pro",
     images: [
@@ -42,7 +51,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Shortly Pro — Shorten your URLs instantly",
-    description: "Create, manage, and share short links with analytics — free and fast.",
+    description:
+      "Create, manage, and share short links with analytics — free and fast.",
     creator: "@yansh_08",
     images: ["/bg.webp"],
   },
@@ -58,7 +68,7 @@ export const metadata: Metadata = {
     ],
   },
 
-  manifest: "/manifest.webmanifest", 
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -69,8 +79,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable} ${space.variable} antialiased`}>
-        <HotKeysHandler />
-        {children}
+        <NextAuthProvider>
+          <HotKeysHandler />
+          {children}
+        </NextAuthProvider>
       </body>
     </html>
   );
